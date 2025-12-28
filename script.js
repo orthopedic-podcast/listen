@@ -8,30 +8,40 @@ hamburgerMenu.addEventListener('click', () => {
 });
 
 // Tab Navigation
-const tabs = document.querySelectorAll('.tab-btn');
+const desktopTabs = document.querySelectorAll('.desktop-nav .tab-btn');
+const mobileTabs = document.querySelectorAll('.mobile-nav .tab-btn');
+const allTabs = document.querySelectorAll('.tab-btn');
 const panels = document.querySelectorAll('.content-panel');
 
-tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        const targetTab = tab.dataset.tab;
-        
-        // Update active states
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        
-        // Show corresponding panel
-        panels.forEach(panel => {
-            panel.classList.remove('active');
-            if (panel.id === targetTab) {
-                panel.classList.add('active');
-            }
-        });
-        
-        // Close mobile menu after selecting a tab
-        if (mobileNav.classList.contains('show')) {
-            mobileNav.classList.remove('show');
-            hamburgerMenu.classList.remove('active');
+function handleTabClick(targetTab) {
+    // Update all tab states
+    allTabs.forEach(t => {
+        if (t.dataset.tab === targetTab) {
+            t.classList.add('active');
+        } else {
+            t.classList.remove('active');
         }
+    });
+    
+    // Show corresponding panel
+    panels.forEach(panel => {
+        panel.classList.remove('active');
+        if (panel.id === targetTab) {
+            panel.classList.add('active');
+        }
+    });
+    
+    // Close mobile menu after selecting a tab
+    if (mobileNav.classList.contains('show')) {
+        mobileNav.classList.remove('show');
+        hamburgerMenu.classList.remove('active');
+    }
+}
+
+// Add event listeners to all tabs
+allTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        handleTabClick(tab.dataset.tab);
     });
 });
 

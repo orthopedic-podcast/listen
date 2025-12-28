@@ -31,6 +31,12 @@ function handleTabClick(targetTab) {
         }
     });
     
+    // Scroll to top when switching tabs
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    
     // Close mobile menu after selecting a tab
     if (mobileNav.classList.contains('show')) {
         mobileNav.classList.remove('show');

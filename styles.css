@@ -76,6 +76,71 @@ nav {
     letter-spacing: -0.5px;
 }
 
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    padding: 0;
+}
+
+.hamburger-menu span {
+    width: 100%;
+    height: 2px;
+    background: white;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+    display: flex;
+    gap: 8px;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mobile-nav.show {
+    display: flex;
+}
+
+.mobile-nav .tab-btn {
+    width: 100%;
+    text-align: left;
+    padding: 12px 20px;
+}
+
 .tab-nav {
     display: flex;
     gap: 8px;
@@ -819,14 +884,31 @@ td {
 }
 
 @media (max-width: 768px) {
-    .tab-nav {
-        flex-wrap: wrap;
-        gap: 4px;
+    /* Navigation Mobile Styles */
+    nav {
+        padding: 15px 20px;
     }
     
-    .tab-btn {
-        font-size: 12px;
-        padding: 6px 12px;
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    .desktop-nav {
+        display: none;
+    }
+    
+    .logo-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .logo {
+        font-size: 18px;
+    }
+    
+    .sponsor-label {
+        font-size: 10px;
     }
     
     h1 {
@@ -834,7 +916,7 @@ td {
     }
     
     .content-section {
-        padding: 30px 20px;
+        padding: 100px 20px 30px 20px;
     }
     
     .host-grid,

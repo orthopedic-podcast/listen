@@ -1,3 +1,12 @@
+// Hamburger Menu Toggle
+const hamburgerMenu = document.querySelector('.hamburger-menu');
+const mobileNav = document.querySelector('.mobile-nav');
+
+hamburgerMenu.addEventListener('click', () => {
+    hamburgerMenu.classList.toggle('active');
+    mobileNav.classList.toggle('show');
+});
+
 // Tab Navigation
 const tabs = document.querySelectorAll('.tab-btn');
 const panels = document.querySelectorAll('.content-panel');
@@ -17,6 +26,12 @@ tabs.forEach(tab => {
                 panel.classList.add('active');
             }
         });
+        
+        // Close mobile menu after selecting a tab
+        if (mobileNav.classList.contains('show')) {
+            mobileNav.classList.remove('show');
+            hamburgerMenu.classList.remove('active');
+        }
     });
 });
 
